@@ -19,7 +19,7 @@ const adminSchema = new mongoose.Schema({
 adminSchema.methods.getJWT = function() {
   const token = jwt.sign(
     { adminId: this._id, shopId: this.shopId },
-    "SECRET_KEY",
+       process.env.JWT_SECRET,
     { expiresIn: "1d" }
   );
   return token;
